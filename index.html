@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandarin Garden 3 · Yên Sở, Hà Nội · Hotline 0966.283.256</title>
+  <meta name="description" content="Mandarin Garden 3 – dự án căn hộ của Tập đoàn Hòa Phát tại đường Đỗ Mười, Yên Sở, Hà Nội. Đăng ký nhận bảng giá, mặt bằng và lịch tham quan nhà mẫu. Hotline 0966.283.256." />
+  <meta property="og:title" content="Mandarin Garden 3 · Yên Sở, Hà Nội" />
+  <meta property="og:image" content="images/hero.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 950: '#081428', 900: '#0B1D3A', 800: '#13294F', 700: '#1C3766' },
+            gold: { 300: '#E9D3A1', 400: '#D9BA78', 500: '#C9A45C', 600: '#A9843F' },
+            ivory: '#FAF8F3'
+          },
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .gold-text { background: linear-gradient(90deg,#E9D3A1,#C9A45C 50%,#E9D3A1); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .gold-btn { background: linear-gradient(135deg,#E9D3A1,#C9A45C 60%,#A9843F); }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+    .hero-bg { background-image: linear-gradient(180deg,rgba(8,20,40,.55),rgba(8,20,40,.88)), url('images/hero.jpg'), linear-gradient(135deg,#0B1D3A,#1C3766); background-size: cover; background-position: center; }
+    .form-bg { background-image: linear-gradient(180deg,rgba(8,20,40,.82),rgba(8,20,40,.92)), url('images/toa-thap.jpg'), linear-gradient(135deg,#0B1D3A,#1C3766); background-size: cover; background-position: center; }
+    .field { width: 100%; border-radius: .75rem; border: 1px solid rgba(11,29,58,.15); padding: .85rem 1rem; transition: all .2s; background: #fff; }
+    .field:focus { outline: none; border-color: #C9A45C; box-shadow: 0 0 0 3px rgba(233,211,161,.6); }
+    .zoomable { cursor: zoom-in; }
+    @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(201,164,92,.6); } 100% { box-shadow: 0 0 0 16px rgba(201,164,92,0); } }
+    .pulse { animation: pulse-ring 1.8s infinite; }
+  </style>
+</head>
+<body class="bg-ivory font-sans text-navy-900 antialiased">
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="#top" class="flex flex-col leading-none">
+        <span class="font-serif text-2xl font-semibold tracking-wide text-white">Mandarin <span class="gold-text">Garden 3</span></span>
+        <span class="mt-1 text-[11px] uppercase tracking-[0.3em] text-gold-300">Yên Sở · Hà Nội</span>
+      </a>
+      <ul class="hidden items-center gap-7 text-sm font-medium text-white/85 lg:flex">
+        <li><a href="#tong-quan" class="transition hover:text-gold-300">Tổng quan</a></li>
+        <li><a href="#vi-tri" class="transition hover:text-gold-300">Vị trí</a></li>
+        <li><a href="#tien-ich" class="transition hover:text-gold-300">Tiện ích</a></li>
+        <li><a href="#mat-bang" class="transition hover:text-gold-300">Mặt bằng</a></li>
+        <li><a href="#chinh-sach" class="transition hover:text-gold-300">Chính sách</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="tel:0966283256" class="hidden items-center gap-2 text-sm font-semibold text-gold-300 xl:flex">☎ 0966.283.256</a>
+        <button data-open-modal="Nhận bảng giá" class="gold-btn hidden rounded-full px-5 py-2.5 text-sm font-semibold text-navy-950 shadow-lg shadow-gold-500/20 transition hover:brightness-110 sm:inline-block">Nhận bảng giá</button>
+        <button id="menuBtn" class="rounded-lg p-2 text-white lg:hidden" aria-label="Mở menu">
+          <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy-950/95 px-5 pb-6 backdrop-blur lg:hidden">
+      <a href="#tong-quan" class="block py-3 text-white/90">Tổng quan</a>
+      <a href="#vi-tri" class="block py-3 text-white/90">Vị trí</a>
+      <a href="#tien-ich" class="block py-3 text-white/90">Tiện ích</a>
+      <a href="#mat-bang" class="block py-3 text-white/90">Mặt bằng</a>
+      <a href="#chinh-sach" class="block py-3 text-white/90">Chính sách</a>
+      <a href="tel:0966283256" class="block py-3 font-semibold text-gold-300">☎ Hotline 0966.283.256</a>
+      <a href="#dang-ky" class="gold-btn mt-3 block rounded-full py-3 text-center font-semibold text-navy-950">Đăng ký tư vấn</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="top" class="hero-bg relative flex min-h-screen items-center">
+    <div class="mx-auto w-full max-w-7xl px-5 pt-28 pb-20 lg:px-8">
+      <p class="reveal mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-gold-300 sm:text-sm">Một dự án của Tập đoàn Hòa Phát</p>
+      <h1 class="reveal max-w-4xl font-serif text-4xl font-semibold leading-tight text-white sm:text-6xl lg:text-7xl">
+        Biểu tượng sống mới <br class="hidden sm:block" />bên <span class="gold-text">công viên Yên Sở</span>
+      </h1>
+      <p class="reveal mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+        Hai tòa tháp CT1 – CT2, khoảng 1.000 căn hộ 2–3 phòng ngủ trên đường Đỗ Mười – nơi không gian xanh phía Nam Hà Nội gặp kết nối Vành đai 3.
+      </p>
+      <div class="reveal mt-10 flex flex-col gap-4 sm:flex-row">
+        <a href="#dang-ky" class="gold-btn rounded-full px-8 py-4 text-center font-semibold text-navy-950 shadow-xl shadow-gold-500/25 transition hover:-translate-y-0.5 hover:brightness-110">Đăng ký tham quan nhà mẫu</a>
+        <a href="tel:0966283256" class="rounded-full border border-white/40 px-8 py-4 text-center font-medium text-white transition hover:border-gold-300 hover:text-gold-300">Gọi 0966.283.256</a>
+      </div>
+      <div class="reveal mt-16 grid max-w-3xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
+        <div><p class="font-serif text-3xl text-gold-300 sm:text-4xl">1,7 ha</p><p class="mt-1 text-xs text-white/70 sm:text-sm">Tổng diện tích</p></div>
+        <div><p class="font-serif text-3xl text-gold-300 sm:text-4xl">~1.000</p><p class="mt-1 text-xs text-white/70 sm:text-sm">Căn hộ</p></div>
+        <div><p class="font-serif text-3xl text-gold-300 sm:text-4xl">30%</p><p class="mt-1 text-xs text-white/70 sm:text-sm">Mật độ xây dựng</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TỔNG QUAN ===== -->
+  <section id="tong-quan" class="py-20 lg:py-28">
+    <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:px-8">
+      <div class="reveal">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-600">Tổng quan dự án</p>
+        <h2 class="mt-4 font-serif text-3xl font-semibold leading-snug sm:text-5xl">Chuẩn mực Mandarin, <br />trên một địa chỉ mới</h2>
+        <p class="mt-6 leading-relaxed text-navy-800/80">Tiếp nối Mandarin Garden (Cầu Giấy) và Mandarin Garden 2 (Tân Mai), Mandarin Garden 3 mang tinh thần sống xanh, an toàn và bền vững của Hòa Phát đến cửa ngõ phía Nam Thủ đô.</p>
+        <img src="images/toa-thap.jpg" alt="Phối cảnh hai tòa tháp Mandarin Garden 3" loading="lazy" class="zoomable mt-8 aspect-[16/10] w-full rounded-2xl object-cover shadow-2xl" />
+      </div>
+      <div class="reveal self-center overflow-hidden rounded-2xl border border-navy-900/10 bg-white shadow-xl">
+        <table class="w-full text-left text-sm sm:text-base">
+          <tbody class="divide-y divide-navy-900/10">
+            <tr><th class="w-2/5 bg-navy-900 px-6 py-4 font-medium text-gold-300">Tên dự án</th><td class="px-6 py-4 font-semibold">Mandarin Garden 3</td></tr>
+            <tr><th class="bg-navy-900 px-6 py-4 font-medium text-gold-300">Chủ đầu tư</th><td class="px-6 py-4">Tập đoàn Hòa Phát</td></tr>
+            <tr><th class="bg-navy-900 px-6 py-4 font-medium text-gold-300">Vị trí</th><td class="px-6 py-4">Đường Đỗ Mười, phường Yên Sở, Hà Nội</td></tr>
+            <tr><th class="bg-navy-900 px-6 py-4 font-medium text-gold-300">Quy mô</th><td class="px-6 py-4">1,7 ha · 2 tòa CT1, CT2</td></tr>
+            <tr><th class="bg-navy-900 px-6 py-4 font-medium text-gold-300">Số căn hộ</th><td class="px-6 py-4">Khoảng 1.000 căn · ~20 căn/sàn</td></tr>
+            <tr><th class="bg-navy-900 px-6 py-4 font-medium text-gold-300">Loại căn</th><td class="px-6 py-4">2PN, 2PN+, 3PN · 68,4 – 119,9 m²</td></tr>
+            <tr><th class="bg-navy-900 px-6 py-4 font-medium text-gold-300">Mật độ xây dựng</th><td class="px-6 py-4">30%</td></tr>
+            <tr><th class="bg-navy-900 px-6 py-4 font-medium text-gold-300">Giá bán</th><td class="px-6 py-4">Theo công bố chính thức của Chủ đầu tư – <button data-open-modal="Nhận bảng giá" class="font-semibold text-gold-600 underline underline-offset-4">nhận bảng giá</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VỊ TRÍ ===== -->
+  <section id="vi-tri" class="bg-navy-900 py-20 text-white lg:py-28">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="reveal max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-300">Vị trí chiến lược</p>
+        <h2 class="mt-4 font-serif text-3xl font-semibold leading-snug sm:text-5xl">Giữa lá phổi xanh <span class="gold-text">và trục kết nối</span> phía Nam</h2>
+        <p class="mt-6 leading-relaxed text-white/75">Nằm trên đường Đỗ Mười, sát Vành đai 3 trên cao, liền kề bến xe khách Yên Sở mới và hệ hồ – công viên Yên Sở rộng 323 ha.</p>
+      </div>
+      <img src="images/ban-do.jpg" alt="Bản đồ vị trí Mandarin Garden 3 trên trục Vành đai 3, gần hồ Yên Sở, Gamuda Central, Pháp Vân" loading="lazy" class="reveal zoomable mt-12 w-full rounded-2xl object-cover shadow-2xl ring-1 ring-white/10" />
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:border-gold-400/60 hover:bg-white/10"><p class="font-serif text-4xl text-gold-300">01</p><h3 class="mt-4 text-lg font-semibold">Công viên Yên Sở</h3><p class="mt-2 text-sm leading-relaxed text-white/70">Không gian xanh và hồ điều hòa lớn của phía Nam Hà Nội.</p></div>
+        <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:border-gold-400/60 hover:bg-white/10"><p class="font-serif text-4xl text-gold-300">02</p><h3 class="mt-4 text-lg font-semibold">Vành đai 3 · Pháp Vân</h3><p class="mt-2 text-sm leading-relaxed text-white/70">Kết nối nhanh vào trung tâm và cao tốc Pháp Vân – Cầu Giẽ.</p></div>
+        <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:border-gold-400/60 hover:bg-white/10"><p class="font-serif text-4xl text-gold-300">03</p><h3 class="mt-4 text-lg font-semibold">Bến xe Yên Sở</h3><p class="mt-2 text-sm leading-relaxed text-white/70">Thuận tiện di chuyển về các tỉnh phía Nam.</p></div>
+        <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:border-gold-400/60 hover:bg-white/10"><p class="font-serif text-4xl text-gold-300">04</p><h3 class="mt-4 text-lg font-semibold">Tam Trinh · Giải Phóng</h3><p class="mt-2 text-sm leading-relaxed text-white/70">Các trục hướng tâm đang được mở rộng, nâng cấp.</p></div>
+      </div>
+      <div class="mt-10 grid gap-6 lg:grid-cols-5">
+        <figure class="reveal lg:col-span-3">
+          <img src="images/tuyen-duong.jpg" alt="Ảnh flycam tuyến đường quy hoạch kết nối Vành đai 3 – Tam Trinh, đi qua bến xe Yên Sở và Mandarin Garden 3" loading="lazy" class="zoomable aspect-[16/9] w-full rounded-2xl object-cover" />
+          <figcaption class="mt-3 text-sm text-white/70"><span class="font-semibold text-gold-300">Tuyến đường quy hoạch</span> kết nối Vành đai 3 – Yên Sở – Tam Trinh, có nhánh vào dự án (theo quy hoạch, chưa triển khai).</figcaption>
+        </figure>
+        <figure class="reveal lg:col-span-2">
+          <img src="images/ben-xe.jpg" alt="Bến xe khách Yên Sở mới nhìn từ trên cao" loading="lazy" class="zoomable aspect-[16/9] w-full rounded-2xl object-cover lg:aspect-auto lg:h-[calc(100%-2.75rem)]" />
+          <figcaption class="mt-3 text-sm text-white/70"><span class="font-semibold text-gold-300">Bến xe khách Yên Sở</span> – liền kề khu đất dự án.</figcaption>
+        </figure>
+      </div>
+      <p class="mt-8 text-xs text-white/50">* Thông tin kết nối và quy hoạch mang tính tham khảo, theo hạ tầng hiện hữu và quy hoạch được phê duyệt.</p>
+    </div>
+  </section>
+
+  <!-- ===== TIỆN ÍCH ===== -->
+  <section id="tien-ich" class="py-20 lg:py-28">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="reveal text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-600">Tiện ích nội khu</p>
+        <h2 class="mt-4 font-serif text-3xl font-semibold sm:text-5xl">Tiện ích đỉnh cao, ngay dưới chân nhà</h2>
+      </div>
+      <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="reveal relative min-h-[300px] overflow-hidden rounded-2xl shadow-xl sm:col-span-2 lg:row-span-2">
+          <img src="images/hero.jpg" alt="Phối cảnh bể bơi ngoài trời giữa hai tòa tháp" loading="lazy" class="zoomable absolute inset-0 h-full w-full object-cover" />
+          <div class="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-navy-950/85 via-navy-950/20 to-transparent p-7 text-white">
+            <p class="text-xs uppercase tracking-[0.3em] text-gold-300">Điểm nhấn</p><h3 class="mt-2 font-serif text-3xl">Bể bơi ngoài trời</h3><p class="mt-2 max-w-md text-sm text-white/85">Không gian thư giãn giữa hai tòa tháp, bao quanh bởi vườn cây xanh.</p>
+          </div>
+        </div>
+        <div class="reveal rounded-2xl bg-white p-7 shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:shadow-xl"><span class="text-2xl text-gold-500">◆</span><h3 class="mt-3 font-semibold">Đường chạy bộ</h3><p class="mt-1 text-sm text-navy-800/70">Vòng chạy trong vườn nội khu.</p></div>
+        <div class="reveal rounded-2xl bg-white p-7 shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:shadow-xl"><span class="text-2xl text-gold-500">◆</span><h3 class="mt-3 font-semibold">Sân tennis &amp; thể thao</h3><p class="mt-1 text-sm text-navy-800/70">Vận động mỗi ngày cho cả gia đình.</p></div>
+        <div class="reveal rounded-2xl bg-white p-7 shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:shadow-xl"><span class="text-2xl text-gold-500">◆</span><h3 class="mt-3 font-semibold">Sân chơi trẻ em</h3><p class="mt-1 text-sm text-navy-800/70">An toàn, trong tầm mắt phụ huynh.</p></div>
+        <div class="reveal rounded-2xl bg-white p-7 shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:shadow-xl"><span class="text-2xl text-gold-500">◆</span><h3 class="mt-3 font-semibold">Khu nhà trẻ</h3><p class="mt-1 text-sm text-navy-800/70">Thuận tiện đưa đón con nhỏ.</p></div>
+        <div class="reveal rounded-2xl bg-white p-7 shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:shadow-xl"><span class="text-2xl text-gold-500">◆</span><h3 class="mt-3 font-semibold">Vườn đọc sách &amp; dưỡng sinh</h3><p class="mt-1 text-sm text-navy-800/70">Góc tĩnh cho mọi thế hệ.</p></div>
+        <div class="reveal rounded-2xl bg-white p-7 shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:shadow-xl"><span class="text-2xl text-gold-500">◆</span><h3 class="mt-3 font-semibold">Thương mại – dịch vụ</h3><p class="mt-1 text-sm text-navy-800/70">Tiện nghi thiết yếu tại khối đế.</p></div>
+        <div class="reveal rounded-2xl bg-white p-7 shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:shadow-xl"><span class="text-2xl text-gold-500">◆</span><h3 class="mt-3 font-semibold">An ninh 24/7</h3><p class="mt-1 text-sm text-navy-800/70">Vận hành bài bản, an tâm sinh sống.</p></div>
+      </div>
+      <div class="mt-5 grid gap-5 lg:grid-cols-3">
+        <figure class="reveal relative overflow-hidden rounded-2xl shadow-xl lg:col-span-2">
+          <img src="images/cong-vien.jpg" alt="Cư dân picnic, chạy bộ bên hồ công viên Yên Sở" loading="lazy" class="zoomable aspect-[16/10] h-full w-full object-cover" />
+          <figcaption class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/85 to-transparent p-6 text-white"><p class="font-serif text-2xl">Cuối tuần bên công viên Yên Sở</p></figcaption>
+        </figure>
+        <figure class="reveal relative overflow-hidden rounded-2xl bg-navy-900 shadow-xl">
+          <img src="images/tong-the.jpg" alt="Mặt bằng tổng thể 3D: tòa CT1, CT2, khu nhà trẻ, bể bơi và sân chơi" loading="lazy" class="zoomable h-full max-h-[520px] w-full object-cover object-top" />
+          <figcaption class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 to-transparent p-6 text-white"><p class="font-serif text-2xl">Mặt bằng tổng thể</p><p class="text-xs text-white/70">Ảnh minh họa</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MẶT BẰNG ===== -->
+  <section id="mat-bang" class="bg-white py-20 lg:py-28">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-600">Mặt bằng căn hộ</p>
+          <h2 class="mt-4 font-serif text-3xl font-semibold sm:text-5xl">Năm kiểu căn, một chuẩn sống</h2>
+        </div>
+        <div class="flex gap-2" role="tablist">
+          <button class="tab-btn rounded-full border border-navy-900/20 px-5 py-2 text-sm font-medium transition" data-tab="ct1">Tòa CT1</button>
+          <button class="tab-btn rounded-full border border-navy-900/20 px-5 py-2 text-sm font-medium transition" data-tab="ct2">Tòa CT2</button>
+        </div>
+      </div>
+      <div class="reveal mt-10 grid gap-8 lg:grid-cols-5">
+        <div class="rounded-2xl bg-ivory p-4 ring-1 ring-navy-900/10 lg:col-span-3">
+          <img id="planImg" src="images/mat-bang-ct1.jpg" alt="Mặt bằng tầng điển hình tòa CT1" class="zoomable w-full rounded-xl object-contain" />
+          <p class="mt-3 text-center text-xs text-navy-800/60">Nhấn vào ảnh để phóng to · Mặt bằng tham khảo, theo hồ sơ thiết kế được phê duyệt</p>
+        </div>
+        <div class="space-y-3 lg:col-span-2">
+          <div class="flex items-center justify-between rounded-2xl border border-navy-900/10 p-5"><div class="flex items-center gap-3"><span class="h-4 w-4 rounded bg-[#9BCB8E]"></span><div><p class="font-semibold">2 phòng ngủ</p><p class="text-xs text-navy-800/60">Căn 01, 04–08, 10–14, 17</p></div></div><p class="font-serif text-xl">68,4 – 68,9 m²</p></div>
+          <div class="flex items-center justify-between rounded-2xl border border-navy-900/10 p-5"><div class="flex items-center gap-3"><span class="h-4 w-4 rounded bg-[#D7A9D9]"></span><div><p class="font-semibold">2 phòng ngủ +</p><p class="text-xs text-navy-800/60">Căn 19</p></div></div><p class="font-serif text-xl">68,8 m²</p></div>
+          <div class="flex items-center justify-between rounded-2xl border border-navy-900/10 p-5"><div class="flex items-center gap-3"><span class="h-4 w-4 rounded bg-[#F1CF6E]"></span><div><p class="font-semibold">3 phòng ngủ</p><p class="text-xs text-navy-800/60">Căn 18, 20</p></div></div><p class="font-serif text-xl">90,1 – 90,8 m²</p></div>
+          <div class="flex items-center justify-between rounded-2xl border border-navy-900/10 p-5"><div class="flex items-center gap-3"><span class="h-4 w-4 rounded bg-[#F2A3A0]"></span><div><p class="font-semibold">3 phòng ngủ</p><p class="text-xs text-navy-800/60">Căn 02, 03, 15, 16</p></div></div><p class="font-serif text-xl">99,7 m²</p></div>
+          <div class="flex items-center justify-between rounded-2xl border border-navy-900/10 p-5"><div class="flex items-center gap-3"><span class="h-4 w-4 rounded bg-[#A9AEE0]"></span><div><p class="font-semibold">3 phòng ngủ góc</p><p class="text-xs text-navy-800/60">Căn 09</p></div></div><p class="font-serif text-xl">119,9 m²</p></div>
+          <button data-open-modal="Mặt bằng chi tiết" class="gold-btn mt-2 w-full rounded-xl py-3.5 font-semibold text-navy-950">Nhận bộ mặt bằng chi tiết</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TÀI LIỆU ===== -->
+  <section class="bg-ivory py-16">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="reveal text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-600">Tài liệu dự án</p>
+        <h2 class="mt-3 font-serif text-3xl font-semibold sm:text-4xl">Nhận bộ tài liệu cập nhật mới nhất</h2>
+      </div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <button data-open-modal="Bảng giá" class="reveal rounded-2xl bg-white p-6 text-left shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:ring-gold-500/60"><p class="text-2xl text-gold-500">↓</p><p class="mt-3 font-semibold">Bảng giá</p><p class="mt-1 text-sm text-navy-800/60">Khi Chủ đầu tư công bố</p></button>
+        <button data-open-modal="Mặt bằng chi tiết" class="reveal rounded-2xl bg-white p-6 text-left shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:ring-gold-500/60"><p class="text-2xl text-gold-500">▣</p><p class="mt-3 font-semibold">Mặt bằng thiết kế căn hộ</p><p class="mt-1 text-sm text-navy-800/60">Chi tiết từng trục căn</p></button>
+        <button data-open-modal="Chính sách bán hàng" class="reveal rounded-2xl bg-white p-6 text-left shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:ring-gold-500/60"><p class="text-2xl text-gold-500">%</p><p class="mt-3 font-semibold">Chính sách bán hàng</p><p class="mt-1 text-sm text-navy-800/60">Ưu đãi &amp; hỗ trợ vay</p></button>
+        <button data-open-modal="Pháp lý & tiến độ thanh toán" class="reveal rounded-2xl bg-white p-6 text-left shadow-md ring-1 ring-navy-900/5 transition hover:-translate-y-1 hover:ring-gold-500/60"><p class="text-2xl text-gold-500">✓</p><p class="mt-3 font-semibold">Pháp lý &amp; tiến độ thanh toán</p><p class="mt-1 text-sm text-navy-800/60">Cập nhật theo từng giai đoạn</p></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHÍNH SÁCH & DÒNG TIỀN ===== -->
+  <section id="chinh-sach" class="bg-navy-950 py-20 text-white lg:py-28">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="reveal max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-300">Chính sách bán hàng</p>
+        <h2 class="mt-4 font-serif text-3xl font-semibold sm:text-5xl">Thanh toán nhẹ nhàng, <span class="gold-text">dòng tiền chủ động</span></h2>
+        <p class="mt-5 text-white/70">Tiến độ dự kiến, theo quy định của Luật Kinh doanh bất động sản. Chính sách chính thức do Chủ đầu tư ban hành.</p>
+      </div>
+      <div class="mt-12 grid gap-8 lg:grid-cols-2">
+        <div class="reveal overflow-hidden rounded-2xl border border-white/10">
+          <table class="w-full text-left text-sm sm:text-base">
+            <thead class="bg-white/5 text-gold-300"><tr><th class="px-6 py-4 font-medium">Đợt</th><th class="px-6 py-4 font-medium">Thời điểm</th><th class="px-6 py-4 text-right font-medium">Tỷ lệ</th></tr></thead>
+            <tbody class="divide-y divide-white/10">
+              <tr><td class="px-6 py-4">1</td><td class="px-6 py-4">Ký hợp đồng mua bán</td><td class="px-6 py-4 text-right font-semibold text-gold-300">30%</td></tr>
+              <tr><td class="px-6 py-4">2</td><td class="px-6 py-4">Theo tiến độ xây dựng</td><td class="px-6 py-4 text-right font-semibold text-gold-300">40%</td></tr>
+              <tr><td class="px-6 py-4">3</td><td class="px-6 py-4">Nhận bàn giao căn hộ</td><td class="px-6 py-4 text-right font-semibold text-gold-300">25%</td></tr>
+              <tr><td class="px-6 py-4">4</td><td class="px-6 py-4">Nhận Giấy chứng nhận</td><td class="px-6 py-4 text-right font-semibold text-gold-300">5%</td></tr>
+            </tbody>
+          </table>
+          <div class="grid grid-cols-1 gap-px bg-white/10 sm:grid-cols-2">
+            <div class="bg-navy-950 p-6"><p class="text-gold-300">Hỗ trợ vay vốn</p><p class="mt-1 text-sm text-white/70">Tỷ lệ cho vay và ngân hàng đối tác theo chính sách chính thức.</p></div>
+            <div class="bg-navy-950 p-6"><p class="text-gold-300">Hỗ trợ lãi suất</p><p class="mt-1 text-sm text-white/70">Thời gian ưu đãi và lãi suất sau ưu đãi được công bố minh bạch.</p></div>
+          </div>
+        </div>
+        <div class="reveal rounded-2xl bg-gradient-to-br from-navy-800 to-navy-900 p-7 ring-1 ring-gold-500/30 sm:p-9">
+          <h3 class="font-serif text-2xl text-gold-300">Ước tính khoản trả góp</h3>
+          <div class="mt-6 space-y-5 text-sm">
+            <label class="block">Số tiền vay: <b id="vLoan" class="text-gold-300"></b>
+              <input id="loan" type="range" min="500" max="6000" step="100" value="2400" class="mt-2 w-full accent-[#C9A45C]" /></label>
+            <label class="block">Lãi suất: <b id="vRate" class="text-gold-300"></b>
+              <input id="rate" type="range" min="6" max="16" step="0.5" value="11" class="mt-2 w-full accent-[#C9A45C]" /></label>
+            <label class="block">Thời hạn: <b id="vYears" class="text-gold-300"></b>
+              <input id="years" type="range" min="5" max="35" step="1" value="25" class="mt-2 w-full accent-[#C9A45C]" /></label>
+          </div>
+          <div class="mt-8 rounded-xl bg-navy-950/60 p-6 text-center">
+            <p class="text-sm text-white/70">Trả hằng tháng (gốc + lãi đều)</p>
+            <p id="pay" class="mt-2 font-serif text-4xl text-gold-300"></p>
+          </div>
+          <p class="mt-4 text-xs text-white/50">Kết quả mang tính tham khảo. Lãi suất thực tế theo ngân hàng tại thời điểm vay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORM ĐĂNG KÝ CHI TIẾT ===== -->
+  <section id="dang-ky" class="form-bg py-20 lg:py-28">
+    <div class="mx-auto grid max-w-6xl items-start gap-12 px-5 lg:grid-cols-5 lg:px-8">
+      <div class="reveal text-white lg:col-span-2 lg:pt-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-300">Đăng ký thông tin</p>
+        <h2 class="mt-4 font-serif text-3xl font-semibold leading-snug sm:text-5xl">Nhận bảng giá &amp; lịch tham quan nhà mẫu</h2>
+        <ul class="mt-8 space-y-3 text-white/85">
+          <li class="flex gap-3"><span class="text-gold-300">✓</span> Thông tin chính thức ngay khi Chủ đầu tư công bố</li>
+          <li class="flex gap-3"><span class="text-gold-300">✓</span> Bảng tính dòng tiền theo thu nhập của bạn</li>
+          <li class="flex gap-3"><span class="text-gold-300">✓</span> Hoàn toàn miễn phí, không thu bất kỳ khoản phí nào</li>
+        </ul>
+        <div class="mt-10 space-y-3 rounded-2xl border border-white/15 bg-white/5 p-6">
+          <a href="tel:0966283256" class="flex items-center gap-3 text-lg font-semibold text-gold-300">☎ 0966.283.256</a>
+          <a href="mailto:minh.duongngoc1988@gmail.com" class="flex items-center gap-3 break-all text-white/85 hover:text-gold-300">✉ minh.duongngoc1988@gmail.com</a>
+          <a href="https://zalo.me/0966283256" target="_blank" rel="noopener" class="flex items-center gap-3 text-white/85 hover:text-gold-300">💬 Chat Zalo 0966.283.256</a>
+        </div>
+      </div>
+
+      <form id="mainForm" class="lead-form reveal rounded-3xl bg-white p-7 shadow-2xl ring-1 ring-gold-500/30 sm:p-10 lg:col-span-3" novalidate data-source="Form chính">
+        <div class="form-body grid gap-5 sm:grid-cols-2">
+          <div class="sm:col-span-2">
+            <label class="text-sm font-medium">Họ và tên *</label>
+            <input name="ho_ten" type="text" autocomplete="name" class="field mt-2" placeholder="Nguyễn Văn A" />
+            <p class="err mt-1 hidden text-xs text-red-600">Vui lòng nhập họ tên.</p>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Số điện thoại *</label>
+            <input name="so_dien_thoai" type="tel" autocomplete="tel" class="field mt-2" placeholder="09xx xxx xxx" />
+            <p class="err mt-1 hidden text-xs text-red-600">Số điện thoại chưa hợp lệ.</p>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Email</label>
+            <input name="email" type="email" autocomplete="email" class="field mt-2" placeholder="ban@email.com" />
+            <p class="err mt-1 hidden text-xs text-red-600">Email chưa hợp lệ.</p>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Loại căn quan tâm</label>
+            <select name="loai_can" class="field mt-2">
+              <option>Chưa xác định</option><option>2 phòng ngủ (68,4 – 68,9 m²)</option><option>2 phòng ngủ + (68,8 m²)</option><option>3 phòng ngủ (90,1 – 99,7 m²)</option><option>3 phòng ngủ góc (119,9 m²)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Mục đích</label>
+            <select name="muc_dich" class="field mt-2"><option>Mua để ở</option><option>Mua cho con / người thân</option><option>Đầu tư cho thuê</option></select>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Ngân sách dự kiến</label>
+            <select name="ngan_sach" class="field mt-2"><option>Chưa xác định</option><option>Dưới 5 tỷ</option><option>5 – 7 tỷ</option><option>7 – 9 tỷ</option><option>Trên 9 tỷ</option></select>
+          </div>
+          <div>
+            <label class="text-sm font-medium">Thời gian liên hệ</label>
+            <select name="thoi_gian_lien_he" class="field mt-2"><option>Bất kỳ lúc nào</option><option>Buổi sáng (8h – 12h)</option><option>Buổi chiều (13h – 17h)</option><option>Buổi tối (18h – 21h)</option><option>Cuối tuần</option></select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm font-medium">Tài liệu muốn nhận</label>
+            <div class="mt-2 flex flex-wrap gap-2 text-sm">
+              <label class="flex items-center gap-2 rounded-full border border-navy-900/15 px-4 py-2"><input type="checkbox" name="tai_lieu" value="Bảng giá" class="accent-[#C9A45C]" checked /> Bảng giá</label>
+              <label class="flex items-center gap-2 rounded-full border border-navy-900/15 px-4 py-2"><input type="checkbox" name="tai_lieu" value="Mặt bằng chi tiết" class="accent-[#C9A45C]" /> Mặt bằng</label>
+              <label class="flex items-center gap-2 rounded-full border border-navy-900/15 px-4 py-2"><input type="checkbox" name="tai_lieu" value="Chính sách bán hàng" class="accent-[#C9A45C]" /> Chính sách</label>
+              <label class="flex items-center gap-2 rounded-full border border-navy-900/15 px-4 py-2"><input type="checkbox" name="tai_lieu" value="Lịch tham quan nhà mẫu" class="accent-[#C9A45C]" /> Tham quan nhà mẫu</label>
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm font-medium">Ghi chú</label>
+            <textarea name="ghi_chu" rows="3" class="field mt-2" placeholder="Ví dụ: muốn xem căn tầng trung, hướng Đông Nam…"></textarea>
+          </div>
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+          <label class="flex items-start gap-3 text-xs leading-relaxed text-navy-800/70 sm:col-span-2">
+            <input name="dong_y" type="checkbox" class="mt-0.5 h-4 w-4 accent-[#C9A45C]" />
+            <span>Tôi đồng ý để đơn vị phân phối liên hệ tư vấn và xử lý dữ liệu cá nhân cho mục đích này.</span>
+          </label>
+          <p class="consent-err hidden text-xs text-red-600 sm:col-span-2">Vui lòng xác nhận đồng ý để được liên hệ.</p>
+          <button type="submit" class="submit-btn gold-btn rounded-xl py-4 font-semibold text-navy-950 shadow-lg shadow-gold-500/30 transition hover:brightness-110 disabled:opacity-60 sm:col-span-2">Gửi đăng ký</button>
+          <p class="send-err hidden text-center text-sm text-red-600 sm:col-span-2">Chưa gửi được. Vui lòng thử lại hoặc gọi <a href="tel:0966283256" class="font-semibold underline">0966.283.256</a>.</p>
+        </div>
+        <div class="form-success hidden py-12 text-center">
+          <p class="font-serif text-3xl text-navy-900">Cảm ơn bạn!</p>
+          <p class="mt-3 text-navy-800/70">Chuyên viên tư vấn sẽ liên hệ trong thời gian sớm nhất.<br />Cần gấp, gọi ngay <a href="tel:0966283256" class="font-semibold text-gold-600">0966.283.256</a>.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== ĐƠN VỊ PHÂN PHỐI ===== -->
+  <section class="bg-white py-20">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-2 lg:px-8">
+      <img src="images/megan-van-phong.jpg" alt="Văn phòng Megan Holdings tại Yên Sở, Hà Nội" loading="lazy" class="reveal zoomable aspect-[4/3] w-full rounded-2xl object-cover shadow-xl" />
+      <div class="reveal">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-gold-600">Đơn vị phân phối</p>
+        <h2 class="mt-4 font-serif text-3xl font-semibold sm:text-4xl">Megan Holdings</h2>
+        <p class="mt-2 font-medium text-navy-800/80">Phân phối và phát triển bất động sản · Nhân – Tâm – Tài</p>
+        <p class="mt-6 leading-relaxed text-navy-800/75">Văn phòng tại Yên Sở – ngay cạnh dự án, sẵn sàng đón khách tham quan khu đất, nhà mẫu và tư vấn tài chính trực tiếp.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="tel:0966283256" class="gold-btn rounded-full px-7 py-3.5 text-center font-semibold text-navy-950">☎ 0966.283.256</a>
+          <a href="https://zalo.me/0966283256" target="_blank" rel="noopener" class="rounded-full border border-navy-900/20 px-7 py-3.5 text-center font-medium hover:border-gold-500">Nhắn Zalo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-navy-950 pt-16 pb-24 text-white/70 sm:pb-8">
+    <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:grid-cols-2 lg:grid-cols-3 lg:px-8">
+      <div>
+        <p class="font-serif text-2xl text-white">Mandarin <span class="gold-text">Garden 3</span></p>
+        <p class="mt-3 text-sm">Đường Đỗ Mười, phường Yên Sở, Hà Nội<br />Chủ đầu tư: Tập đoàn Hòa Phát</p>
+      </div>
+      <div class="text-sm">
+        <img src="images/megan-logo.png" alt="Logo Megan Holdings" class="h-14 w-auto" />
+        <p class="mt-3">Megan Holdings – Đơn vị phân phối<br />Yên Sở, Hà Nội</p>
+      </div>
+      <div class="text-sm">
+        <p class="font-semibold text-gold-300">Liên hệ</p>
+        <p class="mt-3 leading-7">Hotline: <a href="tel:0966283256" class="font-semibold text-white hover:text-gold-300">0966.283.256</a><br />Email: <a href="mailto:minh.duongngoc1988@gmail.com" class="break-all text-white hover:text-gold-300">minh.duongngoc1988@gmail.com</a><br />Zalo: <a href="https://zalo.me/0966283256" target="_blank" rel="noopener" class="text-white hover:text-gold-300">0966.283.256</a></p>
+      </div>
+    </div>
+    <div class="mx-auto mt-12 max-w-7xl border-t border-white/10 px-5 pt-6 text-xs leading-relaxed text-white/45 lg:px-8">
+      <p>Thông tin, hình ảnh trên website mang tính tham khảo và có thể thay đổi theo công bố chính thức của Chủ đầu tư. Website không thu tiền đặt cọc hay bất kỳ khoản phí nào.</p>
+      <p class="mt-2">© <span id="year"></span> Megan Holdings – Đơn vị phân phối. Bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+
+  <!-- ===== NÚT LIÊN HỆ NỔI ===== -->
+  <div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
+    <a href="https://zalo.me/0966283256" target="_blank" rel="noopener" class="flex h-14 w-14 items-center justify-center rounded-full bg-[#0068FF] text-sm font-bold text-white shadow-2xl" aria-label="Chat Zalo">Zalo</a>
+    <a href="tel:0966283256" class="pulse gold-btn flex h-14 items-center gap-2 rounded-full px-5 font-semibold text-navy-950 shadow-2xl" aria-label="Gọi hotline">☎ <span class="hidden sm:inline">0966.283.256</span></a>
+  </div>
+
+  <!-- ===== POPUP FORM NHANH ===== -->
+  <div id="modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-navy-950/75 p-4 backdrop-blur-sm">
+    <form id="quickForm" class="lead-form relative w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl ring-1 ring-gold-500/40 sm:p-9" novalidate data-source="Popup">
+      <button type="button" id="closeModal" class="absolute right-4 top-3 text-2xl text-navy-800/50 hover:text-navy-900" aria-label="Đóng">×</button>
+      <div class="form-body space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-600">Mandarin Garden 3</p>
+        <h3 id="modalTitle" class="font-serif text-2xl font-semibold">Nhận bảng giá</h3>
+        <input type="hidden" name="tai_lieu" id="modalDoc" value="Bảng giá" />
+        <div><input name="ho_ten" type="text" autocomplete="name" class="field" placeholder="Họ và tên *" /><p class="err mt-1 hidden text-xs text-red-600">Vui lòng nhập họ tên.</p></div>
+        <div><input name="so_dien_thoai" type="tel" autocomplete="tel" class="field" placeholder="Số điện thoại *" /><p class="err mt-1 hidden text-xs text-red-600">Số điện thoại chưa hợp lệ.</p></div>
+        <div><input name="email" type="email" autocomplete="email" class="field" placeholder="Email (không bắt buộc)" /><p class="err mt-1 hidden text-xs text-red-600">Email chưa hợp lệ.</p></div>
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+        <label class="flex items-start gap-3 text-xs leading-relaxed text-navy-800/70"><input name="dong_y" type="checkbox" class="mt-0.5 h-4 w-4 accent-[#C9A45C]" /><span>Tôi đồng ý để đơn vị phân phối liên hệ tư vấn và xử lý dữ liệu cá nhân cho mục đích này.</span></label>
+        <p class="consent-err hidden text-xs text-red-600">Vui lòng xác nhận đồng ý để được liên hệ.</p>
+        <button type="submit" class="submit-btn gold-btn w-full rounded-xl py-3.5 font-semibold text-navy-950 disabled:opacity-60">Gửi yêu cầu</button>
+        <p class="send-err hidden text-center text-sm text-red-600">Chưa gửi được. Vui lòng gọi <a href="tel:0966283256" class="font-semibold underline">0966.283.256</a>.</p>
+      </div>
+      <div class="form-success hidden py-8 text-center">
+        <p class="font-serif text-3xl">Cảm ơn bạn!</p>
+        <p class="mt-3 text-navy-800/70">Chúng tôi sẽ gửi tài liệu và liên hệ sớm nhất.</p>
+      </div>
+    </form>
+  </div>
+
+  <!-- ===== XEM ẢNH PHÓNG TO ===== -->
+  <div id="lightbox" class="fixed inset-0 z-[70] hidden items-center justify-center bg-navy-950/95 p-4">
+    <button id="closeLb" class="absolute right-5 top-4 text-4xl text-white/80 hover:text-white" aria-label="Đóng">×</button>
+    <img id="lbImg" src="" alt="" class="max-h-[90vh] max-w-full rounded-lg object-contain" />
+  </div>
+
+  <script>
+    // ====== CẤU HÌNH NHẬN EMAIL ======
+    // Form gửi qua dịch vụ FormSubmit (miễn phí). Lần gửi ĐẦU TIÊN, FormSubmit sẽ gửi
+    // một email kích hoạt tới địa chỉ dưới đây – bấm "Activate Form" một lần là xong.
+    const RECEIVER_EMAIL = 'minh.duongngoc1988@gmail.com';
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + RECEIVER_EMAIL;
+
+    const $ = id => document.getElementById(id);
+
+    // Navbar đổi nền khi cuộn
+    const nav = $('navbar');
+    window.addEventListener('scroll', () => { const s = window.scrollY > 40; nav.classList.toggle('bg-navy-950/95', s); nav.classList.toggle('shadow-xl', s); nav.classList.toggle('backdrop-blur', s); });
+
+    // Menu di động
+    const menu = $('mobileMenu');
+    $('menuBtn').addEventListener('click', () => menu.classList.toggle('hidden'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+
+    // Hiệu ứng xuất hiện khi cuộn
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Tab mặt bằng CT1 / CT2
+    const tabs = document.querySelectorAll('.tab-btn');
+    const setTab = id => {
+      tabs.forEach(b => { const on = b.dataset.tab === id; b.classList.toggle('bg-navy-900', on); b.classList.toggle('text-gold-300', on); b.classList.toggle('border-navy-900', on); });
+      $('planImg').src = 'images/mat-bang-' + id + '.jpg';
+      $('planImg').alt = 'Mặt bằng tầng điển hình tòa ' + id.toUpperCase();
+    };
+    tabs.forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
+    setTab('ct1');
+
+    // Máy tính trả góp
+    const [loan, rate, years] = ['loan', 'rate', 'years'].map($);
+    const calc = () => {
+      const P = +loan.value * 1e6, r = +rate.value / 100 / 12, n = +years.value * 12;
+      const m = r ? P * r / (1 - Math.pow(1 + r, -n)) : P / n;
+      $('vLoan').textContent = (+loan.value / 1000).toLocaleString('vi-VN', { maximumFractionDigits: 1 }) + ' tỷ';
+      $('vRate').textContent = (+rate.value).toLocaleString('vi-VN') + '%/năm';
+      $('vYears').textContent = years.value + ' năm';
+      $('pay').textContent = '~' + (Math.round(m / 1e5) / 10).toLocaleString('vi-VN') + ' triệu';
+    };
+    [loan, rate, years].forEach(el => el.addEventListener('input', calc));
+    calc();
+
+    // Popup form nhanh
+    const modal = $('modal');
+    const openModal = title => { $('modalTitle').textContent = 'Nhận ' + title.replace(/^Nhận /, '').toLowerCase(); $('modalDoc').value = title.replace(/^Nhận /, ''); modal.classList.remove('hidden'); modal.classList.add('flex'); };
+    const closeModal = () => { modal.classList.add('hidden'); modal.classList.remove('flex'); };
+    document.querySelectorAll('[data-open-modal]').forEach(b => b.addEventListener('click', () => openModal(b.dataset.openModal)));
+    $('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+    // Xem ảnh phóng to
+    const lb = $('lightbox');
+    document.querySelectorAll('.zoomable').forEach(img => img.addEventListener('click', () => { $('lbImg').src = img.src; $('lbImg').alt = img.alt; lb.classList.remove('hidden'); lb.classList.add('flex'); }));
+    const closeLb = () => { lb.classList.add('hidden'); lb.classList.remove('flex'); };
+    $('closeLb').addEventListener('click', closeLb);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeLb(); } });
+
+    // Kiểm tra & gửi form về email
+    document.querySelectorAll('.lead-form').forEach(form => {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const g = n => form.querySelector(`[name="${n}"]`);
+        const flag = (el, bad) => el.parentElement.querySelector('.err').classList.toggle('hidden', !bad);
+        const name = g('ho_ten'), phone = g('so_dien_thoai'), email = g('email');
+        const nameBad = name.value.trim().length < 2;
+        const phoneBad = !/^(0|\+84)(3|5|7|8|9)\d{8}$/.test(phone.value.replace(/[\s.\-]/g, ''));
+        const emailBad = email.value.trim() !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+        const consentBad = !g('dong_y').checked;
+        flag(name, nameBad); flag(phone, phoneBad); flag(email, emailBad);
+        form.querySelector('.consent-err').classList.toggle('hidden', !consentBad);
+        if (nameBad || phoneBad || emailBad || consentBad) return;
+        if (g('_honey').value) return; // chặn bot
+
+        const data = {};
+        new FormData(form).forEach((v, k) => { if (k === '_honey' || k === 'dong_y') return; data[k] = data[k] ? data[k] + ', ' + v : v; });
+        data.nguon = form.dataset.source;
+        data.trang = location.href;
+        data.thoi_diem = new Date().toLocaleString('vi-VN');
+        data._subject = '[Mandarin Garden 3] Khách đăng ký mới – ' + name.value.trim() + ' – ' + phone.value.trim();
+        data._template = 'table';
+        data._captcha = 'false';
+        if (email.value.trim()) data._replyto = email.value.trim();
+
+        const btn = form.querySelector('.submit-btn'), old = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Đang gửi…';
+        form.querySelector('.send-err').classList.add('hidden');
+        try {
+          const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) });
+          const out = await res.json().catch(() => ({}));
+          if (!res.ok || String(out.success) === 'false') throw new Error(out.message || res.status);
+          form.querySelector('.form-body').classList.add('hidden');
+          form.querySelector('.form-success').classList.remove('hidden');
+        } catch (err) {
+          form.querySelector('.send-err').classList.remove('hidden');
+          btn.disabled = false; btn.textContent = old;
+        }
+      });
+    });
+
+    $('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
